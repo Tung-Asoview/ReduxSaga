@@ -11,6 +11,8 @@ import {
 import LinearGradient from "react-native-linear-gradient";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
+import { connect } from 'react-redux';
+import { listAll, fetchDataThunk, fetchSuccess, fetchError } from '../actions/index';
 
 var data = [
   {
@@ -45,7 +47,7 @@ var data = [
         },
 ];
 
-export default class All extends React.Component{
+class All extends React.Component{
   constructor(props){
     super(props);
     this.state={
@@ -243,3 +245,11 @@ var styles = StyleSheet.create({
     marginTop:10
   }
 });
+
+function mapStateToProps(state) {
+  return { 
+      foods: state.foods
+  };
+}
+
+export default connect(mapStateToProps, { listAll, fetchSuccess, fetchError, fetchDataThunk })(All);
