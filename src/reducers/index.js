@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import tasks from './tasks';
+import foods from './foods';
 
 const allReducers = combineReducers({
-    tasks 
+    foods 
 });
 
 export default allReducers;

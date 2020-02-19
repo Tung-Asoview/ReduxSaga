@@ -7,9 +7,9 @@ import {
   Dimensions
 } from "react-native";
 import ScrollableTabView, { DefaultTabBar } from 'react-native-scrollable-tab-view';
-import All from "./home_child/All";
-import Menu from "./home_child/Menu";
-import Popular from "./home_child/Popular";
+import All from "./components/home_child/All";
+import Menu from "./components/home_child/Menu";
+import Popular from "./components/home_child/Popular";
 
 export default class Home extends React.Component{
   render(){

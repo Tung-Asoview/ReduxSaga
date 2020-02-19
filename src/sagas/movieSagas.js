@@ -11,7 +11,7 @@ import { Api } from './Api';
 
 function* fetchMovies() {
     try {
-        const receivedMovies = yield Api.getMoviesFromApi();   
+        const receivedMovies = yield Api.getFoods();   
         yield put({ type: FETCH_SUCCEEDED, receivedMovies: receivedMovies });     
     } catch (error) {        
         yield put({ type: FETCH_FAILED, error });

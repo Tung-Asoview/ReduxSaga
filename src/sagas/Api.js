@@ -1,19 +1,23 @@
-/*
-Mr Nguyen Duc Hoang
-https://www.youtube.com/c/nguyenduchoang
-Email: sunlight4d@gmail.com
-Send GET / POST api requests to server
-*/
-const apiGetAllFoods = 'https://facebook.github.io/react-native/movies.json';
+const apiFoods = 'http://localhost:8080/product/show/';
 
-async function getFoods() {
+export async function getFoods() {
     try {
-        let response = await fetch(apiGetAllFoods);
+        let response = await fetch(apiFoods);
         let responseJson = await response.json();
-        return responseJson.movies; //list of foods
+        return responseJson; //list of foods
     } catch (error) {
         console.error(`Error is : ${error}`);
     }
 }
 
-export default getFoods;
+export async function getFood(id) {
+    try {
+        let response = await fetch(apiFoods + id);
+        let responseJson = await response.json();
+        return responseJson; //list of foods
+    } catch (error) {
+        console.error(`Error is : ${error}`);
+    }
+}
+
+//  export default  getFoods;
