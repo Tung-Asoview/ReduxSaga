@@ -7,13 +7,11 @@ const foodReducer = (state = initalState, action) => {
         case types.LIST_ALL:
             state = [...action.foods];
             return [...state];
-        // case FETCH_FAILED:
-        //     return [];
-        // case ADD_MOVIE:
-        //     return [
-        //         ...state,
-        //         action.newMovie
-        //     ];
+        case types.FOODSBY:
+            state = [...action.foodsBy]
+            return [
+                [...state]
+            ];
         default:
             return [...state]; //state does not change
     }

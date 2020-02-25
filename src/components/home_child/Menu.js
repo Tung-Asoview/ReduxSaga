@@ -7,71 +7,105 @@ import {
   Image,
   TouchableOpacity
 } from "react-native";
+import { connect } from 'react-redux';
+import { getFoodByArtist, getArtists } from './../../sagas/Api';
+import { foodsByArtistId, artistAll } from './../../actions/index';
 
-export default class Menu extends React.Component{
+var test = [
+  {
+     "changedBy":1,
+     "changedOn":"2018-12-31T17:00:00.000+0000",
+     "country":"Việt Nam",
+     "createdBy":1,
+     "createdOn":"2018-12-31T17:00:00.000+0000",
+     "description":"Sản xuất tại việt nam",
+     "firstName":"Kho hàng",
+     "id":1,
+     "lastName":"Quần áo",
+     "lifeSpan":"LifeSpan",
+     "totalProducts":100
+  },
+  {
+     "changedBy":1,
+     "changedOn":"2018-12-31T17:00:00.000+0000",
+     "country":"Hàn Quốc",
+     "createdBy":1,
+     "createdOn":"2018-12-31T17:00:00.000+0000",
+     "description":"Sản xuất tại Hàn Quốc",
+     "firstName":"Kho hàng",
+     "id":2,
+     "lastName":"Quần áo",
+     "lifeSpan":"LifeSpan",
+     "totalProducts":100
+  },
+  {
+     "changedBy":1,
+     "changedOn":"2018-12-31T17:00:00.000+0000",
+     "country":"Nhật bản",
+     "createdBy":1,
+     "createdOn":"2018-12-31T17:00:00.000+0000",
+     "description":"Sản xuất tại Nhật bản",
+     "firstName":"Kho hàng",
+     "id":3,
+     "lastName":"Quần áo",
+     "lifeSpan":"LifeSpan",
+     "totalProducts":100
+  },
+  {
+     "changedBy":1,
+     "changedOn":"2018-12-31T17:00:00.000+0000",
+     "country":"Singapore",
+     "createdBy":1,
+     "createdOn":"2018-12-31T17:00:00.000+0000",
+     "description":"Sản xuất tại Singapore ,việt nam",
+     "firstName":"Kho hàng",
+     "id":4,
+     "lastName":"Quần áo",
+     "lifeSpan":"LifeSpan",
+     "totalProducts":100
+  },
+  {
+     "changedBy":1,
+     "changedOn":"2018-12-31T17:00:00.000+0000",
+     "country":"Philipin",
+     "createdBy":1,
+     "createdOn":"2018-12-31T17:00:00.000+0000",
+     "description":"Sản xuất tại Philipin",
+     "firstName":"Kho hàng",
+     "id":5,
+     "lastName":"Quần áo",
+     "lifeSpan":"LifeSpan",
+     "totalProducts":100
+  }
+]
+
+class Menu extends React.Component{
 
   constructor(props){
     super(props);
     this.state={
-      data:[
-        {
-            type: 'Dessert',
-            color: '#f7931e',
-            data:[
-                {
-                    name:'Stewed Mushrooms',
-                    image: require("../../asset/namkho.jpg"),
-                    price: "$12"
-                },
-                {
-                    name:'Jackfruit Fried',
-                    image: require("../../asset/mitkho.jpg"),
-                    price: "$15"
-                }
-            ]
-        },
-        {
-            type: 'Main course',
-            color: '#39b54a',
-            data:[
-                {
-                    name:'Noodles',
-                    image: require("../../asset/hutieu.jpg"),
-                    rating: 4,
-                    price: "$20"
-                },
-                {
-                    name:'Beef',
-                    image: require("../../asset/cuonlalot.jpg"),
-                    rating: 2,
-                    price: "$12"
-                },
-                {
-                    name:'Salad dressing',
-                    image: require("../../asset/cuondiep.jpg"),
-                    rating: 5,
-                    price: "$13"
-                },
-            ]
-        },
-        {
-            type: 'Other',
-            color: '#ed1e79',
-            data:[
-                {
-                    name:'Salad dressing',
-                    image: require("../../asset/cuondiep.jpg"),
-                    price: "$13"
-                },
-                {
-                    name:'Jackfruit warehouse',
-                    image: require("../../asset/mitkho.jpg"),
-                    price: "$15"
-                }
-            ]
-        },
-    ]
+      data: [],
+      foods: props.foodsBy
     }
+  }
+  getAll(){
+    getArtists().then(artists => {
+      // console.log(artists)
+      this.props.artistAll(artists);
+      this.setState({
+        data: artists
+      })
+    });
+  }
+
+  getFoods(id){
+    getFoodByArtist(id).then(foods => {
+      this.props.foodsByArtistId(foods);
+    })
+  }
+
+  componentDidMount() {
+    this.getAll();
   }
 
   renderItem_type = ({item}) => {
@@ -94,16 +128,18 @@ export default class Menu extends React.Component{
   }
 
   renderItem = ({item}) => {
+    console.log(this.state.foods)
+    // this.getFoods(item.id);
     return(
       <View style={{flex:1}}>
           <Text style={[styles.type,{
-            color: item.color
-          }]}>{item.type}</Text>
+            color: '#f7931e'
+          }]}>{item.description}</Text>
           <View style={[styles.item,{
-            backgroundColor:item.color
+            backgroundColor:'#f7931e'
           }]}>
               <FlatList 
-                data={item.data}
+                data={this.props.foodsBy}
                 renderItem={this.renderItem_type}
                 keyExtractor={(item,index)=>index.toString()}
                 horizontal={true}
@@ -132,6 +168,7 @@ export default class Menu extends React.Component{
   }
   
   render(){
+    console.log(this.state.data)
     return(
       <View style={styles.container}>
           <FlatList 
@@ -181,3 +218,23 @@ var styles = StyleSheet.create({
     fontSize:15
   }
 });
+
+function mapStateToProps(state) {
+  return { 
+    artists : state.artists,
+    foodsBy: state.foodsBy
+  };
+}
+
+function mapDispatchToProps(dispatch, props) {
+  return {
+    artistAll : (artists) => {
+      dispatch(artistAll(artists));
+    },
+    foodsByArtistId : (foodsBy) => {
+      dispatch(foodsByArtistId(foodsBy));
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Menu);

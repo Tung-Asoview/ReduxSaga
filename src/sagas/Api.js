@@ -1,4 +1,5 @@
 const apiFoods = 'http://localhost:8080/product/show/';
+const apiArtists = 'http://localhost:8080/artist/show/';
 
 export async function getFoods() {
     try {
@@ -10,14 +11,22 @@ export async function getFoods() {
     }
 }
 
-export async function getFood(id) {
+export async function getFoodByArtist(id) {
     try {
-        let response = await fetch(apiFoods + id);
+        let response = await fetch(apiFoods + '/artist/' + id);
         let responseJson = await response.json();
-        return responseJson; //list of foods
+        return responseJson; //food
     } catch (error) {
         console.error(`Error is : ${error}`);
     }
 }
 
-//  export default  getFoods;
+export async function getArtists() {
+    try {
+        let response = await fetch(apiArtists);
+        let responseJson = await response.json();
+        return responseJson; //list of artists
+    } catch (error) {
+        console.error(`Error is : ${error}`);
+    }
+}

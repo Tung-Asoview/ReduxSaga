@@ -6,31 +6,49 @@ import {
   FlatList,
   Image,
   TouchableOpacity,
-  TextInput
+  TextInput,
+  RefreshControl
 } from "react-native";
 import LinearGradient from "react-native-linear-gradient";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { connect } from 'react-redux';
-import { getFoods, getFood } from '../../sagas/Api';
-import { listAll, getFoodById } from '../../actions/index';
-
-var data = [];
+import { getFoods } from './../../sagas/Api';
+import { listAll } from './../../actions/index';
 
 class All extends React.Component{
   constructor(props){
     super(props);
     this.state={
-      data: data,
-      data_temp: data,
+      data: [],
+      data_temp: [],
+      refreshing: false,
       search: ''
     }
   }
 
-  componentDidMount() {
+  getAll = () => {
+    this.setState({
+      refreshing: true
+    })
     getFoods().then(foods => {
       this.props.listAll(foods);
+      this.setState({
+        data: foods,
+        data_temp: foods,
+        refreshing: false
+      })
+    }).catch((error) => {
+      this.setState({
+        data: [],
+        data_temp: [],
+        refreshing: false
+      })
     });
+  }
+
+  UNSAFE_componentWillMount() {
+      this.getAll();
   }
 
   _rating(item){
@@ -47,12 +65,6 @@ class All extends React.Component{
       return rating;
   }
 
-  getDetail(id) {
-    getFood(id).then(food => {
-      this.props.getFoodById(food);
-    })
-  }
-
   renderItem = ({item}) => {
     return(
         <LinearGradient 
@@ -67,7 +79,7 @@ class All extends React.Component{
               />
           </View>
           <View style={styles.content}>
-              <Text style={styles.name}>{item.title}</Text>
+              <Text style={styles.name}>{item.name}</Text>
               <View style={styles.rating}>
                 {this._rating(item.avgStars)}
               </View>
@@ -104,11 +116,8 @@ class All extends React.Component{
   }
 
   _search(text){
-      let data = [];
-      this.state.data_temp.map(function(value){
-        if(value.name.indexOf(text) > -1){
-          data.push(value);
-        }
+      let data = this.state.data_temp.filter(value => {
+        return value.title.toUpperCase().indexOf(text) !== -1;
       });
       this.setState({
         data:data,
@@ -117,7 +126,6 @@ class All extends React.Component{
   }
 
   render(){
-    var { foods } = this.props
     return(
       <View style={styles.container}>
           <View style={styles.section}>
@@ -125,6 +133,7 @@ class All extends React.Component{
                 placeholder="Search.."
                 style={{ flex:1, marginLeft:10}}
                 value={this.state.search}
+                keyboardAppearance={true}
                 onChangeText={(text)=>this._search(text)}
               />
               <TouchableOpacity
@@ -139,12 +148,18 @@ class All extends React.Component{
 
           </View>
           <View style={styles.flatList}>
-              <FlatList 
-                data={foods}
+              <FlatList
+                data={this.state.data}
                 renderItem={this.renderItem}
-                keyExtractor={(item, index)=>item.id}
+                keyExtractor={(item, index)=>index.toString()}
                 ItemSeparatorComponent={this.ItemSeparatorComponent}
-                showsVerticalScrollIndicator={false}
+                showsVerticalScrollIndicator={true}
+                refreshControl={
+                <RefreshControl
+                  refreshing={this.state.refreshing}
+                  onRefresh={this.getAll}
+                />
+              }
               />
           </View>
       </View>
@@ -237,9 +252,6 @@ function mapDispatchToProps(dispatch, props) {
   return {
     listAll : (foods) => {
       dispatch(listAll(foods));
-    },
-    getFoodById : (food) => {
-      dispatch(getFoodById(food));
     }
   }
 }

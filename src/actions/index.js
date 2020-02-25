@@ -1,5 +1,4 @@
 import * as types from '../constants/actionTypes';
-import getFoods from '../sagas/Api';
 
 export const listAll = (foods) => {
     return {
@@ -8,10 +7,17 @@ export const listAll = (foods) => {
     };
 }
 
-export function getFoodById(food) {
+export const foodsByArtistId = (foodsBy) => {
+    return {
+        type: types.FOODSBY,
+        foodsBy
+    };
+}
+
+export function artistAll(artists) {
     return { 
-        type: types.FOOD_DETAIL,
-        food
+        type: types.ARTIST_ALL,
+        artists
     };
 }
 

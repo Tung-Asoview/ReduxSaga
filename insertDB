@@ -1,0 +1,189 @@
+
+
+INSERT INTO `fresher_frontend`.`user`
+(
+`changed_by`,`changed_on`,`city`,`country`,`created_by`,`created_on`,`email`,`first_name`,`last_name`,`order_count`,`role`,`signup_date`)
+VALUES
+(
+1,'2019-01-01 00:00:00',"Hồ chí minh","Việt Nam",1,'2019-01-01 00:00:00',"thuongbv@fpt.com.vn","Bùi ","Văn Thương",10,2,'2019-01-01 00:00:00');
+
+INSERT INTO `fresher_frontend`.`user`
+(
+`changed_by`,`changed_on`,`city`,`country`,`created_by`,`created_on`,`email`,`first_name`,`last_name`,`order_count`,`role`,`signup_date`)
+VALUES
+(
+1,'2019-01-01 00:00:00',"Bình Thuận","Việt Nam",1,'2019-01-01 00:00:00',"tungnm12@fpt.com.vn","Nguyễn ","Minh Tùng",10,2,'2019-01-01 00:00:00');
+
+INSERT INTO `fresher_frontend`.`user`
+(
+`changed_by`,`changed_on`,`city`,`country`,`created_by`,`created_on`,`email`,`first_name`,`last_name`,`order_count`,`role`,`signup_date`)
+VALUES
+(
+1,'2019-01-01 00:00:00',"Bình Định","Việt Nam",1,'2019-01-01 00:00:00',"lanvtt@fpt.com.vn","Võ Thị ","Thu Lan",10,2,'2019-01-01 00:00:00');
+
+
+
+
+INSERT INTO `fresher_frontend`.`artist`
+(`changed_by`,`changed_on`,`country`,`created_by`,`created_on`,`description`,`first_name`,`last_name`,`life_span`,`total_products`)
+VALUES
+(1,'2019-01-01 00:00:00',"Việt Nam",1,'2019-01-01 00:00:00',"Sản xuất tại việt nam","Kho hàng","Quần áo","LifeSpan",100);
+INSERT INTO `fresher_frontend`.`artist`
+(`changed_by`,`changed_on`,`country`,`created_by`,`created_on`,`description`,`first_name`,`last_name`,`life_span`,`total_products`)
+VALUES
+(1,'2019-01-01 00:00:00',"Hàn Quốc",1,'2019-01-01 00:00:00',"Sản xuất tại Hàn Quốc","Kho hàng","Quần áo","LifeSpan",100);
+INSERT INTO `fresher_frontend`.`artist`
+(`changed_by`,`changed_on`,`country`,`created_by`,`created_on`,`description`,`first_name`,`last_name`,`life_span`,`total_products`)
+VALUES
+(1,'2019-01-01 00:00:00',"Nhật bản",1,'2019-01-01 00:00:00',"Sản xuất tại Nhật bản","Kho hàng","Quần áo","LifeSpan",100);
+INSERT INTO `fresher_frontend`.`artist`
+(`changed_by`,`changed_on`,`country`,`created_by`,`created_on`,`description`,`first_name`,`last_name`,`life_span`,`total_products`)
+VALUES
+(1,'2019-01-01 00:00:00',"Singapore",1,'2019-01-01 00:00:00',"Sản xuất tại Singapore ,việt nam","Kho hàng","Quần áo","LifeSpan",100);
+INSERT INTO `fresher_frontend`.`artist`
+(`changed_by`,`changed_on`,`country`,`created_by`,`created_on`,`description`,`first_name`,`last_name`,`life_span`,`total_products`)
+VALUES
+(1,'2019-01-01 00:00:00',"Philipin",1,'2019-01-01 00:00:00',"Sản xuất tại Philipin","Kho hàng","Quần áo","LifeSpan",100);
+
+
+
+
+
+INSERT INTO `fresher_frontend`.`product`
+(
+`avg_stars`,`changed_by`,`changed_on`,`created_by`,`created_on`,`description`,`image`,`price`,`quantity_sold`,`name`,`title`,`artist_id`)
+VALUES
+(4,
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',
+"The hands of the needy holding a container to receive free charity food from volunteers : the concept of food assistance",
+"https://image.shutterstock.com/image-photo/hands-needy-holding-container-receive-600w-1562934382.jpg",15000,2,"Free Food","Dummy Food",1);
+
+INSERT INTO `fresher_frontend`.`product`
+(
+`avg_stars`,`changed_by`,`changed_on`,`created_by`,`created_on`,`description`,`image`,`price`,`quantity_sold`,`name`,`title`,`artist_id`)
+VALUES
+(4,
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',
+"Healthy food clean eating selection: fruit, vegetable, seeds, superfood, cereals, leaf vegetable on background",
+"https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-600w-1579388836.jpg",17000,2,"Any Food","Dummy Food",1);
+INSERT INTO `fresher_frontend`.`product`
+(
+`avg_stars`,`changed_by`,`changed_on`,`created_by`,`created_on`,`description`,`image`,`price`,`quantity_sold`,`name`,`title`,`artist_id`)
+VALUES
+(3,
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',
+"Healthy food clean eating selection: fruit, vegetable, seeds, superfood, cereals, leaf vegetable on gray concrete background copy space",
+"https://image.shutterstock.com/image-photo/healthy-food-clean-eating-selection-600w-722718082.jpg",18000,2,"Vegestable Food","Dummy Food",1);
+INSERT INTO `fresher_frontend`.`product`
+(
+`avg_stars`,`changed_by`,`changed_on`,`created_by`,`created_on`,`description`,`image`,`price`,`quantity_sold`,`name`,`title`,`artist_id`)
+VALUES
+(2,
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',
+"Selection of healthy food",
+"https://image.shutterstock.com/image-photo/selection-healthy-food-600w-540997561.jpg",19000,2,"Fruit Food","Dummy Food",1);
+INSERT INTO `fresher_frontend`.`product`
+(
+`avg_stars`,`changed_by`,`changed_on`,`created_by`,`created_on`,`description`,`image`,`price`,`quantity_sold`,`name`,`title`,`artist_id`)
+VALUES
+(1,
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',
+"Cooking Fish with Lemons Outdoors Closeup",
+"https://image.shutterstock.com/image-photo/cooking-fish-lemons-outdoors-closeup-600w-1498399316.jpg",20000,2,"Fish Food","Dummy Food",1);
+
+
+
+
+INSERT INTO `fresher_frontend`.`orderproduct`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`item_count`,`order_date`,`order_number`,`total_price`,`user_id`)
+VALUES
+(
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',2,'2019-01-01 00:00:00',1920001,320000,1);
+
+INSERT INTO `fresher_frontend`.`orderproduct`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`item_count`,`order_date`,`order_number`,`total_price`,`user_id`)
+VALUES
+(
+1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',3,'2019-01-01 00:00:00',1920002,530000,1);
+
+
+
+
+
+
+INSERT INTO `fresher_frontend`.`orderdetail`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`price`,`quantity`,`order_id`,`product_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',150000,2,1,1);
+
+INSERT INTO `fresher_frontend`.`orderdetail`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`price`,`quantity`,`order_id`,`product_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',170000,1,1,2);
+INSERT INTO `fresher_frontend`.`orderdetail`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`price`,`quantity`,`order_id`,`product_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',180000,2,2,3);
+INSERT INTO `fresher_frontend`.`orderdetail`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`price`,`quantity`,`order_id`,`product_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',190000,1,2,4);
+INSERT INTO `fresher_frontend`.`orderdetail`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`price`,`quantity`,`order_id`,`product_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',200000,1,2,5);
+
+
+
+
+
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,1,1);
+
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,2,1);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,3,1);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,5,1);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,5,1);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,1,2);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,1,2);
+INSERT INTO `fresher_frontend`.`rating`
+(
+`changed_by`,`changed_on`,`created_by`,`created_on`,`stars`,`product_id`,`user_id`)
+VALUES
+(1,'2019-01-01 00:00:00',1,'2019-01-01 00:00:00',4,1,3);
+
+

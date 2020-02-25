@@ -4,15 +4,15 @@ https://www.youtube.com/c/nguyenduchoang
 Email: sunlight4d@gmail.com
 Create some sagas for FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED
 */
-import { FETCH_MOVIES, FETCH_SUCCEEDED, FETCH_FAILED } from '../actions/actionTypes';
+import * as types from '../actions/index';
 //Saga effects
 import { put, takeLatest } from 'redux-saga/effects';
 import { Api } from './Api';
 
-function* fetchMovies() {
+function* fetchFoods() {
     try {
-        const receivedMovies = yield Api.getFoods();   
-        yield put({ type: FETCH_SUCCEEDED, receivedMovies: receivedMovies });     
+        const foods = yield Api.getFoods();   
+        yield put({ type: types.LIST_ALL, foods: foods });     
     } catch (error) {        
         yield put({ type: FETCH_FAILED, error });
     }

@@ -12,6 +12,7 @@ import Menu from "./components/home_child/Menu";
 import Popular from "./components/home_child/Popular";
 
 export default class Home extends React.Component{
+
   render(){
     return(
       <View style={styles.container}>
