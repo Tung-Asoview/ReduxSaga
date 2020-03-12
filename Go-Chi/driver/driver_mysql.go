@@ -27,3 +27,8 @@ func DBConn() (db *sql.DB) {
 	}
 	return db
 }
+
+type DB struct {
+	SQL *sql.DB
+	// Mgo *mgo.database
+}

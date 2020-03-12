@@ -1,24 +1,24 @@
 package router
 
 import (
+	"Go-Chi/controller"
 	"fmt"
-	"Go-Chi/repository/repo_iplm"
-	"github.com/go-chi/chi/middleware"
 	"github.com/go-chi/chi"
+	"github.com/go-chi/chi/middleware"
 	"net/http"
 	"time"
 )
 
 var router *chi.Mux
-func Routers() *chi.Mux {
+
+func Post_router(controller controller.Post) {
 	router = chi.NewRouter()
 	router.Use(middleware.Recoverer)
-	router.Get("/posts", repo_iplm.AllPosts)
-	//router.Get("/posts/{id}", repository.DetailPost)
-	//router.Post("/posts", repository.CreatePost)
-	//router.Put("/posts/{id}", repository.UpdatePost)
-	//router.Delete("/posts/{id}", repository.DeletePost)
-	return router
+	router.Get("/posts", controller.AllPosts)
+	//router.Get("/posts/{id}", controller.DetailPost)
+	//router.Post("/posts", controller.CreatePost)
+	//router.Put("/posts/{id}", controller.UpdatePost)
+	//router.Delete("/posts/{id}", controller.DeletePost)
 }
 
 func Logger() http.Handler {
