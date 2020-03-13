@@ -8,7 +8,6 @@ import (
 )
 
 var router *chi.Mux
-var db *sql.DB
 
 const (
 	dbName = "goblog"
@@ -26,9 +25,4 @@ func DBConn() (db *sql.DB) {
 		panic(err.Error())
 	}
 	return db
-}
-
-type DB struct {
-	SQL *sql.DB
-	// Mgo *mgo.database
 }
