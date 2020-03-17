@@ -11,15 +11,6 @@ import (
 	"strconv"
 )
 
-func Test(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "application/json")
-	var post Model.User
-	json.NewDecoder(r.Body).Decode(&post)
-	fmt.Println(post)
-
-	respondwithJSON(w, http.StatusCreated, map[string]string{"message": "successfully test"})
-}
-
 func AllPosts(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	db := driver.DBConn()

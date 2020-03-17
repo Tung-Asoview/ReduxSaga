@@ -6,17 +6,17 @@ import (
 	"database/sql"
 )
 
-type Service struct {
+type service struct {
 	Db *sql.DB
 }
 
 func NewPostRepo(db *sql.DB) PostService {
-	return &Service {
+	return &service {
 		Db: db,
 	}
 }
 
-func (s *Service) AllPosts() ([]Model.Post, error){
+func (s *service) AllPosts() ([]Model.Post, error){
 	//posts := make([]Model.Post, 0)
 	//
 	//rows, err := s.Db.Query("SELECT * FROM posts")
@@ -65,7 +65,7 @@ func (s *Service) AllPosts() ([]Model.Post, error){
 	return posts, err
 }
 
-func (s *Service) DetailPost(id int64) (Model.Post, error){
+func (s *service) DetailPost(id int64) (Model.Post, error){
 	var post Model.Post
 
 	query, err := driver.DBConn().Query("SELECT * FROM posts WHERE id=?", id)
@@ -88,7 +88,7 @@ func (s *Service) DetailPost(id int64) (Model.Post, error){
 	return post, err
 }
 
-func (s *Service) CreatePost(p Model.Post) (error){
+func (s *service) CreatePost(p Model.Post) (error){
 	query, err := driver.DBConn().Prepare("Insert posts SET title=?, content=?")
 	catch(err)
 
@@ -98,7 +98,7 @@ func (s *Service) CreatePost(p Model.Post) (error){
 	return err
 }
 
-func (s *Service) UpdatePost(p Model.Post) (error){
+func (s *service) UpdatePost(p Model.Post) (error){
 	query, err := driver.DBConn().Prepare("Update posts set title=?, content=? where id=?")
 	catch(err)
 	_, er := query.Exec(p.Title, p.Content, p.ID)
@@ -108,7 +108,7 @@ func (s *Service) UpdatePost(p Model.Post) (error){
 	return er
 }
 
-func (s *Service) DeletePost(id int64) (error){
+func (s *service) DeletePost(id int64) (error){
 	query, err := driver.DBConn().Prepare("delete from posts where id=?")
 	catch(err)
 	_, er := query.Exec(id)
@@ -311,9 +311,3 @@ func (s *Service) DeletePost(id int64) (error){
 //
 //	respondwithJSON(w, http.StatusOK, map[string]string{"message": "successfully deleted"})
 //}
-
-func catch(err error) {
-	if err != nil {
-		panic(err)
-	}
-}

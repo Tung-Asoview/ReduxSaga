@@ -10,7 +10,7 @@ import (
 var router *chi.Mux
 
 const (
-	dbName = "goblog"
+	dbName = "Golang"
 	dbUser = "root"
 	dbPass = "secret"
 	dbDriver = "mysql"

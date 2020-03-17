@@ -18,9 +18,13 @@ func Post_router() {
 	router.Get("/posts", services.AllPosts)
 	router.Get("/posts/{id}", services.DetailPost)
 	router.Post("/posts", services.CreatePost)
-	router.Post("/test", services.Test)
 	router.Put("/posts/{id}", services.UpdatePost)
 	router.Delete("/posts/{id}", services.DeletePost)
+	router.Post("/addfriend", services.AddFriend)
+	router.Get("/findFriendOfUser", services.FindFriendsOfUser)
+	router.Get("/findCommonFriends", services.FindCommonFriends)
+	router.Post("/followFriend", services.FollowFriend)
+	router.Post("/blockFriend", services.BlockFriend)
 	http.ListenAndServe(":8005", logger())
 }
 
