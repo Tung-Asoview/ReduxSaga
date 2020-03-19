@@ -1,4 +1,4 @@
-package Model
+package models
 
 type Request struct {
 	Requestor string `"json: requestor"`

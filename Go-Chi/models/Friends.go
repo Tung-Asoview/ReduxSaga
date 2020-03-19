@@ -1,4 +1,4 @@
-package Model
+package models
 
 type Friends struct {
 	Success bool	`"json: success"`

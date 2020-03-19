@@ -1,6 +1,7 @@
 package router
 
 import (
+	"Go-Chi/controllers"
 	"Go-Chi/services"
 	"fmt"
 	"github.com/go-chi/chi"
@@ -12,7 +13,7 @@ import (
 
 var router *chi.Mux
 
-func Post_router() {
+func PostRouter() {
 	router = chi.NewRouter()
 	router.Use(middleware.Recoverer)
 	router.Get("/posts", services.AllPosts)
@@ -20,11 +21,12 @@ func Post_router() {
 	router.Post("/posts", services.CreatePost)
 	router.Put("/posts/{id}", services.UpdatePost)
 	router.Delete("/posts/{id}", services.DeletePost)
-	router.Post("/addfriend", services.AddFriend)
-	router.Get("/findFriendOfUser", services.FindFriendsOfUser)
-	router.Get("/findCommonFriends", services.FindCommonFriends)
-	router.Post("/followFriend", services.FollowFriend)
-	router.Post("/blockFriend", services.BlockFriend)
+	router.Post("/addFriend", controllers.AddFriend)
+	router.Get("/findFriendOfUser", controllers.FindFriendsOfUser)
+	router.Get("/findCommonFriends", controllers.FindCommonFriends)
+	router.Post("/followFriend", controllers.FollowFriend)
+	router.Post("/blockFriend", controllers.BlockFriend)
+	router.Get("/receiveUpdatesFromEmail", controllers.ReceiveUpdatesFromEmail)
 	http.ListenAndServe(":8005", logger())
 }
 

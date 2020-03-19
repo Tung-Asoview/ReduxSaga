@@ -1,12 +1,12 @@
-package repository
+package repositories
 
-import "Go-Chi/Model"
+import "Go-Chi/models"
 
 type PostService interface {
-	AllPosts() ([]Model.Post, error)
-	DetailPost(id int64) (Model.Post, error)
-	CreatePost(p Model.Post) (error)
-	UpdatePost(p Model.Post) (error)
+	AllPosts() ([]models.Post, error)
+	DetailPost(id int64) (models.Post, error)
+	CreatePost(p models.Post) (error)
+	UpdatePost(p models.Post) (error)
 	DeletePost(id int64) (error)
 }
 

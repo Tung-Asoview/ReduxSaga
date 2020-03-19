@@ -1,6 +1,6 @@
-package Model
+package models
 
-type Recipients struct {
+type Sender struct {
 	Sender string `"json: sender"`
 	Text string `"json: text"`
 }

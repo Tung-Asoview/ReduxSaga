@@ -1,7 +1,7 @@
-package repository
+package repositories
 
 import (
-	"Go-Chi/Model"
+	"Go-Chi/models"
 	"Go-Chi/driver"
 	"database/sql"
 )
@@ -16,7 +16,7 @@ func NewPostRepo(db *sql.DB) PostService {
 	}
 }
 
-func (s *service) AllPosts() ([]Model.Post, error){
+func (s *service) AllPosts() ([]models.Post, error){
 	//posts := make([]Model.Post, 0)
 	//
 	//rows, err := s.Db.Query("SELECT * FROM posts")
@@ -41,12 +41,12 @@ func (s *service) AllPosts() ([]Model.Post, error){
 	//}
 	//
 	//return posts, nil
-	var post Model.Post
+	var post models.Post
 
 	query, err := driver.DBConn().Query("SELECT * FROM posts")
 	catch(err)
 
-	var posts []Model.Post
+	var posts []models.Post
 	for query.Next(){
 		var id int
 		var title, content string
@@ -65,8 +65,8 @@ func (s *service) AllPosts() ([]Model.Post, error){
 	return posts, err
 }
 
-func (s *service) DetailPost(id int64) (Model.Post, error){
-	var post Model.Post
+func (s *service) DetailPost(id int64) (models.Post, error){
+	var post models.Post
 
 	query, err := driver.DBConn().Query("SELECT * FROM posts WHERE id=?", id)
 	catch(err)
@@ -88,7 +88,7 @@ func (s *service) DetailPost(id int64) (Model.Post, error){
 	return post, err
 }
 
-func (s *service) CreatePost(p Model.Post) (error){
+func (s *service) CreatePost(p models.Post) (error){
 	query, err := driver.DBConn().Prepare("Insert posts SET title=?, content=?")
 	catch(err)
 
@@ -98,7 +98,7 @@ func (s *service) CreatePost(p Model.Post) (error){
 	return err
 }
 
-func (s *service) UpdatePost(p Model.Post) (error){
+func (s *service) UpdatePost(p models.Post) (error){
 	query, err := driver.DBConn().Prepare("Update posts set title=?, content=? where id=?")
 	catch(err)
 	_, er := query.Exec(p.Title, p.Content, p.ID)
