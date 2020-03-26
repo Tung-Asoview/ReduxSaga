@@ -5,5 +5,5 @@ import (
 )
 
 func main() {
-	router.PostRouter()
+	router.Router()
 }
